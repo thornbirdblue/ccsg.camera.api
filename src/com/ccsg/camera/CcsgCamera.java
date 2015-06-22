@@ -75,6 +75,7 @@ public class CcsgCamera extends Activity {
 	        // The Surface has been created, now tell the camera where to draw the preview.
 	    	 try {
 	             mCamera.setPreviewDisplay(holder);
+	             mCamera.setDisplayOrientation(90);
 	             Log.d(TAG,"StartPreview");
 	             mCamera.startPreview();
 	             Log.d(TAG,"StartPreview end");
