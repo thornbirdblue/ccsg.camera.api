@@ -18,6 +18,8 @@ public class CcsgCamera extends Activity {
 	
 	private Camera CcsgCam = null;
 	private CameraPreview mPreview;
+	
+	private Camera.Parameters	para;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,14 @@ public class CcsgCamera extends Activity {
 		CcsgCam = Camera.open();
 		Log.d(TAG,"open camera end");
 		
+		Log.d(TAG,"get para");
+		para = CcsgCam.getParameters();
+		Log.d(TAG,"get para end");		
+		
+		Log.d(TAG,"set para");
+		CcsgCam.setParameters(para);
+		Log.d(TAG,"set para end");	
+			
 		mPreview = new CameraPreview(this, CcsgCam);
         FrameLayout preview = (FrameLayout) findViewById(R.id.camera_preview);
         
@@ -47,15 +57,8 @@ public class CcsgCamera extends Activity {
 			Log.d(TAG,"release camera end");
 		}
 	
-	}
-	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.activity_ccsg_camera, menu);
-		return true;
-	}
-	
+	}	
+
 	public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback {
 	    private SurfaceHolder mHolder;
 	    private Camera mCamera;
